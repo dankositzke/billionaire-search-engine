@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Search Results</title>
+{% endblock %}
+
+{% block body %}
+<div class='content'>
+    <h1 style='text-align: center'>Search Results</h1>
+       
+    <table style="margin-left:auto;margin-right:auto;">
+        <tr>
+            <th>Billionaire     </th>
+            <th>     </th>
+            <th>Transcription     </th>
+            <th>     </th>
+            <th>Timestamp     </th>
+            <th>     </th>
+            <th>YouTube Video     </th>
+        </tr>
+    </table>
+
+    {% for each in query_results %}
+    <table style="margin-left:auto;margin-right:auto;">
+            <tr>
+                <td>{{ each["_source"]["billionaire"] }}</td>
+                <th>     </th>
+                <td>{{ each["_source"]["text"] }}</td>
+                <th>     </th>
+                <td>{{ each["_source"]["timestamp"] }}</td>
+                <th>     </th>
+                <td>
+                    <a href="{{ each['_source']['source_url'] }}">{{ each["_source"]["video_title"] }}</a>
+                </td>
+            </tr>
+    </table>
+    <br>
+    <br>
+    <br>
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}
